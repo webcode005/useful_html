@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Quantity</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+<input type="number" class="updatequnatity" id="pincode" placeholder="enter number">
+	<input type="submit" name="dsf" value="submit">
+	<script>
+
+
+		$(document).on("click",".updatequnatity",function(){
+
+				// $(document).on("keyup",".updatequnatity",function(){
+
+		    var pincode = $('#pincode').val();
+
+		    alert(pincode);
+		    
+		        $.ajaxSetup({
+		            headers: {
+		                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+		            }
+		        });
+
+		        $.ajax({
+		            type:'post',
+		            url:'/checkpincode',
+		            data:{pincode:pincode},
+		            success:function(resp)
+		            {
+		                if(resp['status'] == 0)
+		                {
+		                    $("#post-"+pincode).html("<span class='badge bg-danger'  id='status' status='InActive'> InActive </span>");
+		                }
+		                else if(resp['status'] == 1)
+		                {
+		                    $("#post-"+pincode).html("<span class='badge bg-success'  id='status' status='Active'> Active </span>");
+		                }
+		            },error:function()
+		            {
+		                alert('Error');
+		            }
+
+		        });
+
+
+		});
+
+	</script>
+
+	<script>
+
+		$("#shippingcity").keyup(function(){
+
+       
+	       var scity    = $("#shippingcity").val();
+	       var bcountry = $("#billingcountry").val();
+	       var scountry = $("#shippingcountry").val();
+	       var weight   = $("#weight").val();
+	       var material = $("#material").val();
+	       var totl     = $("#totl").val();
+	          //alert(material);
+	   
+	   
+	   
+	       $.ajax({
+	           type:'post',
+	           url:'../../append-shipping-charge',
+	           data:{scity:scity,bcountry:bcountry,scountry:scountry,weight:weight,material:material,totl:totl},
+	           success:function(resp)
+	           {
+	               //alert(resp);
+	               const obj = JSON.parse(resp);
+	               
+	               var shipping_value = obj.shipping_charge;
+	               var total_value = obj.gtotal;
+	               var customcharge = obj.customcharge;
+	               
+	               
+	               
+	               if(customcharge !==0)
+	               {
+	                   $("#customcharge").show();
+	               }
+	               
+	               $("#shipi").show();
+	               
+	               $("#appendshipping").html("<span class='font-xl text-brand fw-900'><i class='fa fa-rupee' style='font-size:16px'></i> "+shipping_value);
+	               
+	               $("#atotal").hide();
+	               $("#appendtotal").html("<span class='font-xl text-brand fw-900'><i class='fa fa-rupee' style='font-size:16px'></i> "+total_value);
+	               
+	               $("#gttotal").html("<input type='hidden' name='shipping_total' value='"+shipping_value+"' readonly><br><input type='hidden' name='grnd_total' value='"+total_value+"' readonly>");
+	               
+	   
+	           },error:function()
+	           {
+	               alert('Error');
+	           }
+	   
+	       });
+	   
+	   });  
+
+	</script>
+</body>
+</html>

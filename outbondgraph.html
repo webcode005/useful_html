@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <style>
+        .services-details {
+            border: 1px solid black;
+            margin: 2px;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div class="container">
+
+        <div class="row text-center">
+
+            <!-- Start Left services -->
+            <div class="col-md-4 col-sm-4 col-xs-12">
+                <div class="about-move">
+                    <div class="services-details">
+                        <div class="single-services">
+                            <canvas id="doughnutChart" height="200"></canvas>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-12">
+
+                <div class=" about-move">
+                    <div class="services-details">
+                        <div class="single-services">
+                            <canvas id="doughnutChart1" height="200"></canvas>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-md-4 col-sm-4 col-xs-12">
+                <div class="about-move">
+                    <div class="services-details">
+                        <div class="single-services">
+                            <canvas id="pieChart1" height="200"></canvas>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-md-4 col-sm-4 col-xs-12">
+
+                <div class=" about-move">
+                    <div class="services-details">
+                        <div class="single-services">
+                            <canvas id="pieChart2" height="200"></canvas>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="row text-center">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <h3>Portfolio</h3>
+            </div>
+
+            <div class="col-md-4 col-sm-4 col-xs-12">
+                <div class="about-move">
+                    <div class="services-details">
+                        <div class="single-services">
+                            <canvas id="pieChart3" height="200"></canvas>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-md-4 col-sm-4 col-xs-12">
+
+                <div class=" about-move">
+                    <div class="services-details">
+                        <div class="single-services">
+                            <canvas id="pieChart4" height="200"></canvas>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+            <div class="col-md-4 col-sm-4 col-xs-12">
+                <div class="about-move">
+                    <div class="services-details">
+                        <div class="single-services">
+                            <canvas id="pieChart5" height="200"></canvas>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-md-4 col-sm-4 col-xs-12">
+
+                <div class=" about-move">
+                    <div class="services-details">
+                        <div class="single-services">
+                            <canvas id="pieChart6" height="200"></canvas>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="col-md-4 col-sm-4 col-xs-12">
+                <div class="about-move">
+                    <div class="services-details">
+                        <div class="single-services">
+                            <canvas id="pieChart7" height="200"></canvas>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-md-4 col-sm-4 col-xs-12">
+
+                <div class="about-move">
+                    <div class="services-details">
+                        <div class="single-services">
+                            <canvas id="pieChart8" height="200"></canvas>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="col-md-4 col-sm-4 col-xs-12">
+                <div class="about-move">
+                    <div class="services-details">
+                        <div class="single-services">
+                            <canvas id="pieChart9" height="200"></canvas>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-md-4 col-sm-4 col-xs-12">
+                <div class="about-move">
+                    <div class="services-details">
+                        <div class="single-services">
+                            <canvas id="pieChart10" height="200"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-md-4 col-sm-4 col-xs-12">
+                <div class="about-move">
+                    <div class="services-details">
+                        <div class="single-services">
+                            <canvas id="pieChart11" height="200"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+    <script>
+        var randomScalingFactor = function() {
+            return Math.round(Math.random() * 100);
+            //return 0;
+        };
+        var randomColorFactor = function() {
+            return Math.round(Math.random() * 255);
+        };
+        var randomColor = function(opacity) {
+            return 'rgba(' + randomColorFactor() + ',' + randomColorFactor() + ',' + randomColorFactor() + ',' + (opacity || '.3') + ')';
+        };
+
+
+
+
+        // doughnut example
+
+        var DoughtnutConfig = {
+            type: 'doughnut',
+            data: {
+                datasets: [{
+                    data: [
+                        22000,
+                        46000,
+                        1000,
+                    ],
+                    backgroundColor: [
+                        "#F7464A",
+                        "#28bebd",
+                        "#a9cedc",
+                    ],
+                    label: 'Dataset 1'
+                }],
+                labels: [
+                    "Calls Not Connected",
+                    "Calls Connected",
+                    "Calls Not Attempted",
+                ]
+            },
+            options: {
+                responsive: true,
+                legend: {
+                    position: 'right',
+                },
+                title: {
+                    display: true,
+                    text: 'Connectivity Analysis- Today',
+                    fontColor: ['rgba(0,0,0)'],
+                    fontSize: 16,
+
+                },
+
+                tooltips: {
+                    callbacks: {
+                        label: function(tooltipItem, data) {
+                            var dataset = data.datasets[tooltipItem.datasetIndex];
+                            var total = dataset.data.reduce(function(previousValue, currentValue, currentIndex, array) {
+                                return previousValue + currentValue;
+                            });
+                            var currentValue = dataset.data[tooltipItem.index];
+                            var percentage = Math.floor(((currentValue / total) * 100) + 0.5);
+                            return percentage + "%";
+                        }
+                    }
+                },
+
+
+
+            }
+        };
+
+        var DoughtnutConfig1 = {
+            type: 'doughnut',
+            data: {
+                datasets: [{
+                    data: [
+                        17244,
+                        16976,
+                        190,
+                    ],
+                    backgroundColor: [
+                        "#F7464A",
+                        "#4f81bd",
+                        "#9bbb59",
+                    ],
+                    label: 'Dataset 1'
+                }],
+                labels: [
+                    "Calls Not Connected",
+                    "Calls Connected",
+                    "Calls Not Attempted",
+                ]
+            },
+            options: {
+                responsive: true,
+                legend: {
+                    position: 'right',
+                },
+                title: {
+                    display: true,
+                    text: 'Connectivity Analysis- MTD',
+                    fontColor: ['rgba(0,0,0)'],
+                    fontSize: 16,
+
+                },
+                tooltips: {
+                    callbacks: {
+                        label: function(tooltipItem, data) {
+                            var dataset = data.datasets[tooltipItem.datasetIndex];
+                            var total = dataset.data.reduce(function(previousValue, currentValue, currentIndex, array) {
+                                return previousValue + currentValue;
+                            });
+                            var currentValue = dataset.data[tooltipItem.index];
+                            var percentage = Math.floor(((currentValue / total) * 100) + 0.5);
+                            return percentage + "%";
+                        }
+                    }
+                },
+            }
+        };
+
+        // pie chart example
+        var PieConfig1 = {
+            type: 'pie',
+            data: {
+                datasets: [{
+                    data: [
+                        113,
+                        119,
+                        55,
+                    ],
+                    backgroundColor: [
+                        "#9e413e",
+                        "#c0504d",
+                        "#d9aaa9",
+                    ],
+                }],
+                labels: [
+                    "1st Attempt",
+                    "2nd Attempt",
+                    "3rd Attempt",
+
+                ]
+            },
+            options: {
+                responsive: true,
+                legend: {
+                    position: 'right',
+                },
+                title: {
+                    display: true,
+                    text: 'Attempt Analysis- Today',
+                    fontColor: ['rgba(0,0,0)'],
+                    fontSize: 16,
+
+                },
+                tooltips: {
+                    callbacks: {
+                        label: function(tooltipItem, data) {
+                            var dataset = data.datasets[tooltipItem.datasetIndex];
+                            var total = dataset.data.reduce(function(previousValue, currentValue, currentIndex, array) {
+                                return previousValue + currentValue;
+                            });
+                            var currentValue = dataset.data[tooltipItem.index];
+                            var percentage = Math.floor(((currentValue / total) * 100) + 0.5);
+                            return percentage + "%";
+                        }
+                    }
+                },
+            }
+        };
+
+        var PieConfig2 = {
+            type: 'pie',
+            data: {
+                datasets: [{
+                    data: [
+                        5976,
+                        484,
+                        2153,
+                    ],
+                    backgroundColor: [
+                        //"#F7464A",
+                        "#406a9c",
+                        "#4f81bd",
+                        "#aabad7",
+                    ],
+                }],
+                labels: [
+                    "1st Attempt",
+                    "2nd Attempt",
+                    "3rd Attempt",
+                ]
+            },
+            options: {
+                responsive: true,
+                legend: {
+                    position: 'right',
+                },
+                title: {
+                    display: true,
+                    text: 'Attempt Analysis- MTD',
+                    fontColor: ['rgba(0,0,0)'],
+                    fontSize: 16,
+
+                },
+                tooltips: {
+                    callbacks: {
+                        label: function(tooltipItem, data) {
+                            var dataset = data.datasets[tooltipItem.datasetIndex];
+                            var total = dataset.data.reduce(function(previousValue, currentValue, currentIndex, array) {
+                                return previousValue + currentValue;
+                            });
+                            var currentValue = dataset.data[tooltipItem.index];
+                            var percentage = Math.floor(((currentValue / total) * 100) + 0.5);
+                            return percentage + "%";
+                        }
+                    }
+                },
+            }
+        };
+
+        var PieConfig3 = {
+            type: 'pie',
+            data: {
+                datasets: [{
+                    data: [
+                        5976,
+                        484,
+                    ],
+                    backgroundColor: [
+                        //"#F7464A",
+                        "#89a54e",
+                        "#b9cd96",
+
+                    ],
+                }],
+                labels: [
+                    "Today",
+                    "MTD",
+
+                ]
+            },
+            options: {
+                responsive: true,
+                legend: {
+                    position: 'right',
+                },
+                title: {
+                    display: true,
+                    text: 'Connected VOC-Success',
+                    fontColor: ['rgba(0,0,0)'],
+                    fontSize: 16,
+
+                },
+                tooltips: {
+                    callbacks: {
+                        label: function(tooltipItem, data) {
+                            var dataset = data.datasets[tooltipItem.datasetIndex];
+                            var total = dataset.data.reduce(function(previousValue, currentValue, currentIndex, array) {
+                                return previousValue + currentValue;
+                            });
+                            var currentValue = dataset.data[tooltipItem.index];
+                            var percentage = Math.floor(((currentValue / total) * 100) + 0.5);
+                            return percentage + "%";
+                        }
+                    }
+                },
+            }
+        };
+
+        var PieConfig4 = {
+            type: 'pie',
+            data: {
+                datasets: [{
+                    data: [
+                        5976,
+                        484,
+                        2153,
+                        250,
+                    ],
+                    backgroundColor: [
+                        "#4f81bd",
+                        "#c0504d",
+                        "#9bbb59",
+                        "#8064a2",
+                    ],
+                }],
+                labels: [
+                    "Call Back",
+                    "Interested but in Follow Up",
+                    "Addressable Concern 1",
+                    "Addressable Concern 2",
+
+                ]
+            },
+            options: {
+                responsive: true,
+                legend: {
+                    position: 'right',
+                },
+                title: {
+                    display: true,
+                    text: 'WIP- Today',
+                    fontColor: ['rgba(0,0,0)'],
+                    fontSize: 16,
+
+                },
+                tooltips: {
+                    callbacks: {
+                        label: function(tooltipItem, data) {
+                            var dataset = data.datasets[tooltipItem.datasetIndex];
+                            var total = dataset.data.reduce(function(previousValue, currentValue, currentIndex, array) {
+                                return previousValue + currentValue;
+                            });
+                            var currentValue = dataset.data[tooltipItem.index];
+                            var percentage = Math.floor(((currentValue / total) * 100) + 0.5);
+                            return percentage + "%";
+                        }
+                    }
+                },
+            }
+        };
+
+        var PieConfig5 = {
+            type: 'pie',
+            data: {
+                datasets: [{
+                    data: [
+                        5976,
+                        484,
+                        153,
+                        125,
+                    ],
+                    backgroundColor: [
+                        "#4f81bd",
+                        "#c0504d",
+                        "#9bbb59",
+                        "#8064a2",
+                    ],
+                }],
+                labels: [
+                    "Call Back",
+                    "Interested but in Follow Up",
+                    "Addressable Concern 1",
+                    "Addressable Concern 2",
+
+                ]
+            },
+            options: {
+                responsive: true,
+                legend: {
+                    position: 'right',
+                },
+                title: {
+                    display: true,
+                    text: 'WIP- MTD',
+                    fontColor: ['rgba(0,0,0)'],
+                    fontSize: 16,
+
+                },
+                tooltips: {
+                    callbacks: {
+                        label: function(tooltipItem, data) {
+                            var dataset = data.datasets[tooltipItem.datasetIndex];
+                            var total = dataset.data.reduce(function(previousValue, currentValue, currentIndex, array) {
+                                return previousValue + currentValue;
+                            });
+                            var currentValue = dataset.data[tooltipItem.index];
+                            var percentage = Math.floor(((currentValue / total) * 100) + 0.5);
+                            return percentage + "%";
+                        }
+                    }
+                },
+            }
+        };
+
+
+        var PieConfig6 = {
+            type: 'pie',
+            data: {
+                datasets: [{
+                    data: [
+                        5976,
+                        484,
+                        2153,
+                    ],
+                    backgroundColor: [
+                        "#7f9a48",
+                        "#9bbb59",
+                        "#c6d6ac",
+                    ],
+                }],
+                labels: [
+                    "Wrong Audience",
+                    "Not Required",
+                    "UnAddressable Concern 1",
+
+                ]
+            },
+            options: {
+                responsive: true,
+                legend: {
+                    position: 'right',
+                },
+                title: {
+                    display: true,
+                    text: 'Portfolio Failure- Today',
+                    fontColor: ['rgba(0,0,0)'],
+                    fontSize: 16,
+
+                },
+                tooltips: {
+                    callbacks: {
+                        label: function(tooltipItem, data) {
+                            var dataset = data.datasets[tooltipItem.datasetIndex];
+                            var total = dataset.data.reduce(function(previousValue, currentValue, currentIndex, array) {
+                                return previousValue + currentValue;
+                            });
+                            var currentValue = dataset.data[tooltipItem.index];
+                            var percentage = Math.floor(((currentValue / total) * 100) + 0.5);
+                            return percentage + "%";
+                        }
+                    }
+                },
+            }
+        };
+
+
+        var PieConfig7 = {
+            type: 'pie',
+            data: {
+                datasets: [{
+                    data: [
+                        5976,
+                        484,
+                        2153,
+                    ],
+                    backgroundColor: [
+                        //"#F7464A",
+                        "#7f9a48",
+                        "#9bbb59",
+                        "#c6d6ac",
+                    ],
+                }],
+                labels: [
+                    "Wrong Audience",
+                    "Not Required",
+                    "UnAddressable Concern 1",
+
+                ]
+            },
+            options: {
+                responsive: true,
+                legend: {
+                    position: 'right',
+                },
+                title: {
+                    display: true,
+                    text: 'Portfolio Failure- MTD',
+                    fontColor: ['rgba(0,0,0)'],
+                    fontSize: 16,
+
+                },
+                tooltips: {
+                    callbacks: {
+                        label: function(tooltipItem, data) {
+                            var dataset = data.datasets[tooltipItem.datasetIndex];
+                            var total = dataset.data.reduce(function(previousValue, currentValue, currentIndex, array) {
+                                return previousValue + currentValue;
+                            });
+                            var currentValue = dataset.data[tooltipItem.index];
+                            var percentage = Math.floor(((currentValue / total) * 100) + 0.5);
+                            return percentage + "%";
+                        }
+                    }
+                },
+            }
+        };
+
+        var PieConfig8 = {
+            type: 'pie',
+            data: {
+                datasets: [{
+                    data: [
+                        5976,
+                        484,
+                        2153,
+                    ],
+                    backgroundColor: [
+                        //"#F7464A",
+                        "#3c8da3",
+                        "#4bacc6",
+                        "#a9cedc",
+                    ],
+                }],
+                labels: [
+                    "Ringing not picking",
+                    "Temporary Switch Off",
+                    "Temporary out of Coverage",
+
+                ]
+            },
+            options: {
+                responsive: true,
+                legend: {
+                    position: 'right',
+                },
+                title: {
+                    display: true,
+                    text: 'Workable Not Connected VoC- Today',
+                    fontColor: ['rgba(0,0,0)'],
+                    fontSize: 16,
+
+                },
+                tooltips: {
+                    callbacks: {
+                        label: function(tooltipItem, data) {
+                            var dataset = data.datasets[tooltipItem.datasetIndex];
+                            var total = dataset.data.reduce(function(previousValue, currentValue, currentIndex, array) {
+                                return previousValue + currentValue;
+                            });
+                            var currentValue = dataset.data[tooltipItem.index];
+                            var percentage = Math.floor(((currentValue / total) * 100) + 0.5);
+                            return percentage + "%";
+                        }
+                    }
+                },
+            }
+        };
+
+        var PieConfig9 = {
+            type: 'pie',
+            data: {
+                datasets: [{
+                    data: [
+                        5976,
+                        484,
+                        2153,
+                    ],
+                    backgroundColor: [
+                        //"#F7464A",
+                        "#3c8da3",
+                        "#4bacc6",
+                        "#a9cedc",
+                    ],
+                }],
+                labels: [
+                    "Ringing not picking",
+                    "Temporary Switch Off",
+                    "Temporary out of Coverage",
+
+                ]
+            },
+            options: {
+                responsive: true,
+                legend: {
+                    position: 'right',
+                },
+                title: {
+                    display: true,
+                    text: 'Workable Not Connected VoC- MTD',
+                    fontColor: ['rgba(0,0,0)'],
+                    fontSize: 16,
+
+                },
+                tooltips: {
+                    callbacks: {
+                        label: function(tooltipItem, data) {
+                            var dataset = data.datasets[tooltipItem.datasetIndex];
+                            var total = dataset.data.reduce(function(previousValue, currentValue, currentIndex, array) {
+                                return previousValue + currentValue;
+                            });
+                            var currentValue = dataset.data[tooltipItem.index];
+                            var percentage = Math.floor(((currentValue / total) * 100) + 0.5);
+                            return percentage + "%";
+                        }
+                    }
+                },
+            }
+        };
+       
+
+        var PieConfig10 = {
+            type: 'pie',
+            data: {
+                datasets: [{
+                    data: [
+                        5976,
+                        484,
+                        2153,
+                        1205,
+                    ],
+                    backgroundColor: [
+                        "#39869b",
+                        "#46a1b9",
+                        "#7cbbcf",
+                        "#b5d4e0",
+                    ],
+                }],
+                labels: [
+                    "Wrong No",
+                    "Incomplete No",
+                    "[Permanently switch off/not responding",
+                    "Permanently out of coverage",
+
+                ]
+            },
+            options: {
+                responsive: true,
+                legend: {
+                    position: 'right',
+                },
+                title: {
+                    display: true,
+                    text: 'Non- Workable Not Connected VoC- Today',
+                    fontColor: ['rgba(0,0,0)'],
+                    fontSize: 16,
+
+                },
+                tooltips: {
+                    callbacks: {
+                        label: function(tooltipItem, data) {
+                            var dataset = data.datasets[tooltipItem.datasetIndex];
+                            var total = dataset.data.reduce(function(previousValue, currentValue, currentIndex, array) {
+                                return previousValue + currentValue;
+                            });
+                            var currentValue = dataset.data[tooltipItem.index];
+                            var percentage = Math.floor(((currentValue / total) * 100) + 0.5);
+                            return percentage + "%";
+                        }
+                    }
+                },
+            }
+        };
+
+        var PieConfig11 = {
+            type: 'pie',
+            data: {
+                datasets: [{
+                    data: [
+                        5976,
+                        484,
+                        2153,
+                        1205,
+                    ],
+                    backgroundColor: [
+                        "#963d3b",
+                        "#b34a47",
+                        "#ca7e7d",
+                        "#ddb6b5",
+                    ],
+                }],
+                labels: [
+                    "Wrong No",
+                    "Incomplete No",
+                    "Permanently switch",
+                    "Permanently out of coverage",
+
+                ]
+            },
+            options: {
+                responsive: true,
+                legend: {
+                    position: 'right',
+                },
+                title: {
+                    display: true,
+                    text: 'Non- Workable Not Connected VoC- MTD',
+                    fontColor: ['rgba(0,0,0)'],
+                    fontSize: 16,
+
+
+                },
+                tooltips: {
+                    callbacks: {
+                        label: function(tooltipItem, data) {
+                            var dataset = data.datasets[tooltipItem.datasetIndex];
+                            var total = dataset.data.reduce(function(previousValue, currentValue, currentIndex, array) {
+                                return previousValue + currentValue;
+                            });
+                            var currentValue = dataset.data[tooltipItem.index];
+                            var percentage = Math.floor(((currentValue / total) * 100) + 0.5);
+                            return percentage + "%";
+                        }
+                    }
+                },
+            }
+        };
+
+
+
+
+        window.onload = function() {
+
+            window.myDoughnut = new Chart(document.getElementById("doughnutChart"), DoughtnutConfig);
+            window.myDoughnut1 = new Chart(document.getElementById("doughnutChart1"), DoughtnutConfig1);
+            //            window.myPie = new Chart(document.getElementById("pieChart"), PieConfig);
+
+            window.myPie1 = new Chart(document.getElementById("pieChart1"), PieConfig1);
+            window.myPie2 = new Chart(document.getElementById("pieChart2"), PieConfig2);
+            window.myPie3 = new Chart(document.getElementById("pieChart3"), PieConfig3);
+            window.myPie4 = new Chart(document.getElementById("pieChart4"), PieConfig4);
+            window.myPie5 = new Chart(document.getElementById("pieChart5"), PieConfig5);
+            window.myPie6 = new Chart(document.getElementById("pieChart6"), PieConfig6);
+            window.myPie7 = new Chart(document.getElementById("pieChart7"), PieConfig7);
+            window.myPie8 = new Chart(document.getElementById("pieChart8"), PieConfig8);
+            window.myPie9 = new Chart(document.getElementById("pieChart9"), PieConfig9);
+            window.myPie10 = new Chart(document.getElementById("pieChart10"), PieConfig10);
+            window.myPie11 = new Chart(document.getElementById("pieChart11"), PieConfig11);
+
+        };
+    </script>
+
+
+</body></html>

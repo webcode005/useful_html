@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Jquery Form</title>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+      <script type="text/javascript">
+         function get_function(adult_no)
+         
+             {
+               var adl_count = $('select[name="adl"]').find('option:selected').val();
+               var chl_count = $('select[name="chl"]').find('option:selected').val();
+                 if((adl_count == 0) && (chl_count ==0)) {
+                   $('#alertMessage').text("Please select one option").fadeIn( 300 ).delay( 1500 ).fadeOut( 400 );
+                     return false; 
+                 }
+         
+               var useradult = document.getElementById('useradl').value;
+               var userchild = document.getElementById('userchl').value;
+               var adultNo = document.getElementById('adult');
+               var childNo = document.getElementById('child');
+               //alert (useradult);
+               adultNo.value = useradult;
+               childNo.value = userchild;
+               
+               console.log(useradult);
+               console.log(userchild);
+               var adldata = "";
+               var chldata = "";
+         
+         
+         
+               var childNo = document.getElementById('useradl');
+               var adultNo = document.getElementById('userchl');
+               
+//                 var no_of_child = document.getElementById('child').val();
+//               if( userchild==0 )
+//               {
+//                   alert("ok");
+//               }
+         
+               childNo.addEventListener('input', function(e) {
+                 var childValue = childNo.value;
+                 var adultList = 4 - childValue;
+         
+                 if (adultNo.hasChildNodes()) {
+         
+                   //adultNo.innerHTML = "<option value='0'>0</option>";
+                    adultNo.innerHTML = "<option value='0'>----choose Child no----</option>";
+                 }
+         
+                 for (var i = 1; i <= adultList; i++) {
+         
+                   var options = document.createElement('option');
+                   options.setAttribute('value', `${i}`);
+                   options.textContent = `${i}`;
+         
+                   adultNo.appendChild(options);
+         
+                 }
+         
+         
+         
+         
+         
+               });
+               
+                  
+             
+         
+               //      e.preventDefault();
+               //checkNationality();
+               // let bookingWizard = document.querySelector('#bookingdetails');
+               // bookingWizard.style.display = 'block';
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+             }
+         
+         
+      </script>
+   </head>
+   <body>
+      <form>
+          <div>
+             <select name="adl" id="useradl" onchange="get_function(this.value)" required>
+                <option value="" >----choose Adult no----</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+
+                <!--<option value="7">7</option>-->
+             </select>
+         </div>
+         <div class="col-md-12">
+             <label style="color:#000;font-family: 'Open Sans', sans-serif;">Childs</label>
+             <br> <em style="color: green;font-weight: 800;">Child Considered Less then 13 Years</em>
+                <!--   <input type="text" name="chl" value="" id="userchl" /> -->
+             <select name="chl" id="userchl">
+                <option value="0">----choose Child no----</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+             </select>
+          </div>
+         <div class="col-md-1 pad-right"><label>Adult</label></div>
+         <div class="col-md-2"><input type="text" name="adultno" id="adult" class="in" readonly></div>
+         <div class="col-md-1 pad-right"><label>child</label></div>
+         <div class="col-md-2"><input type="text" name="childno" id="child" class="in" readonly></div>
+      </form>
+
+<div class="">
+    <h1>Increase & Decrease Quantity</h1>
+    <span class="increment-btn"></span>
+    <input type="number" name="qunatity" class="qty-input">
+    <span class="decrement-btn"></span>
+</div>
+
+      <script type="text/javascript">
+//        $(document).ready(function())
+//        {
+//            $(".increment-btn").click(function(e)
+//            {
+//              e.preventDefault();
+//              var inc_value = $(".qty-input").val();
+//              var value = parseInt(inc_value,10);
+//              value = isNAN(value) ? 0 :value;
+//              if(value < 10)
+//              {
+//                value++;
+//                $(".qty-input").val(value);
+//              }
+//            });
+//
+//            
+//             $(".decrement-btn").click(function(e)
+//            {
+//              e.preventDefault();
+//              var dec_value = $(".qty-input").val();
+//              var value = parseint(dec_value,10);
+//              value = isNAN(value) ? 0 :value;
+//              if(value > 1)
+//              {
+//                value--;
+//                $(".qty-input").val(value);
+//              }
+//            });
+//        }
+      </script>
+
+   </body>
+</html>

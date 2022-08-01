@@ -1,0 +1,84 @@
+
+<!doctype html>
+<!--[if lte IE 9]>
+<html lang="en" class="oldie">
+<![endif]-->
+<!--[if gt IE 9]><!-->
+<html lang="en">
+<!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+
+<title> Select2 multi-select example</title>
+
+<link rel="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js" defer></script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('.select2').select2({
+    closeOnSelect: false
+});
+});
+</script>
+</head>
+<body class="fullpage logged-out sidebar-false">
+
+<div class="container mt-5">
+    
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group"> <label>Minimal</label> <select class="form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true">
+                <option selected="selected">Alabama</option>
+                <option>Alaska</option>
+                <option>California</option>
+                <option>Delaware</option>
+                <option>Tennessee</option>
+                <option>Texas</option>
+                <option>Washington</option>
+            </select> </div> <!-- /.form-group -->
+        <div class="form-group"> <label>Disabled</label> <select class="form-control select2 select2-hidden-accessible" disabled="" style="width: 100%;" tabindex="-1" aria-hidden="true">
+                <option selected="selected">Alabama</option>
+                <option>Alaska</option>
+                <option>California</option>
+                <option>Delaware</option>
+                <option>Tennessee</option>
+                <option>Texas</option>
+                <option>Washington</option>
+            </select> </div> <!-- /.form-group -->
+    </div> <!-- /.col -->
+    <div class="col-md-6">
+        <div class="form-group"> <label>Multiple</label> <select class="form-control select2 select2-hidden-accessible" multiple="" data-placeholder="Select a State" style="width: 100%;" tabindex="-1" aria-hidden="true">
+                <option>Alabama</option>
+                <option>Alaska</option>
+                <option>California</option>
+                <option>Delaware</option>
+                <option>Tennessee</option>
+                <option>Texas</option>
+                <option>Washington</option>
+            </select> </div> <!-- /.form-group -->
+        <div class="form-group"> <label>Disabled Result</label> <select class="form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true">
+                <option selected="selected">Alabama</option>
+                <option>Alaska</option>
+                <option disabled="disabled">California (disabled)</option>
+                <option>Delaware</option>
+                <option>Tennessee</option>
+                <option>Texas</option>
+                <option>Washington</option>
+            </select> </div> <!-- /.form-group -->
+    </div> <!-- /.col -->
+</div>
+
+</div>
+
+</body>
+</html>

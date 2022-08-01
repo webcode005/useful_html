@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+	</head>
+<body>
+
+		<canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+
+		<canvas id="myChartreact" style="width:100%;max-width:600px"></canvas>
+
+		<h3>Grouped-bar-chart-html--javascript</h3>
+
+		<canvas id="bar-chart-grouped" width="800" height="450"></canvas>
+		<h1>Chart JS Stacked Bar example</h1>
+		<div class="wrapper">
+			<canvas id="myChart4"></canvas>
+		</div>
+
+
+		<script>
+			var xValues = ["Italy", "France", "Spain", "USA", "Argentina"];
+			var yValues = [55, 49, 44, 24, 15];
+			var barColors = ["red", "green","blue","orange","brown"];
+
+			new Chart("myChartreact", {
+			type: "bar",
+			data: {
+				labels: xValues,
+				datasets: [{
+				backgroundColor: barColors,
+				data: yValues
+				}]
+			},
+			options: {
+				legend: {display: false},
+				title: {
+				display: true,
+				text: "World Wine Production 2018"
+				}
+			}
+			});
+		</script>
+
+		<script>
+		var xValues = ["Abandan", "Total"];
+		var yValues = [4, 96];
+		var barColors = [
+		"#b91d47",
+		"#00aba9"
+		];
+
+		new Chart("myChart", {
+		type: "pie",
+		data: {
+			labels: xValues,
+			datasets: [{
+			backgroundColor: barColors,
+			data: yValues
+			}]
+		},
+		options: {
+			title: {
+			display: true,
+			text: "World Wide Wine Production 2018"
+			}
+		}
+		});
+		</script>
+
+		<script>
+		new Chart(document.getElementById("bar-chart-grouped"), {
+			type: 'bar',
+			data: {
+			labels: ["1900", "1950", "1999", "2050"],
+			datasets: [
+				{
+				label: "Africa",
+				backgroundColor: "#3e95cd",
+				data: [133,221,783,2478]
+				}, {
+				label: "Europe",
+				backgroundColor: "#8e5ea2",
+				data: [408,547,675,734]
+				}
+			]
+			},
+			options: {
+			title: {
+				display: true,
+				text: 'Population growth (millions)'
+			}
+			}
+		});
+		</script>
+
+		<script>
+
+
+				var ctx = document.getElementById("myChart4").getContext('2d');
+				var myChart = new Chart(ctx, {
+					type: 'bar',
+					data: {
+						labels: ["<  1","1 - 2","3 - 4","5 - 9","10 - 14","15 - 19","20 - 24","25 - 29","> - 29"],
+						datasets: [{
+							label: 'Total Ans',
+							backgroundColor: "#caf270",
+							data: [12, 59, 5, 56, 58,12, 59, 87, 45],
+						}, {
+							label: 'Abondon',
+							backgroundColor: "#45c490",
+							data: [12, 59, 5, 56, 58,12, 59, 85, 23],
+						}, {
+							label: 'None',
+							backgroundColor: "#008d93",
+							data: [12, 59, 5, 56, 58,12, 59, 65, 51],
+						}
+						],
+					},
+				options: {
+					tooltips: {
+					displayColors: true,
+					callbacks:{
+						mode: 'x',
+					},
+					},
+					scales: {
+					xAxes: [{
+						stacked: true,
+						gridLines: {
+						display: false,
+						}
+					}],
+					yAxes: [{
+						stacked: true,
+						ticks: {
+						beginAtZero: true,
+						},
+						type: 'linear',
+					}]
+					},
+						responsive: true,
+						maintainAspectRatio: false,
+						legend: { position: 'bottom' },
+					}
+				});
+
+		</script>
+
+		<h1>Chart JS Stacked Bar example</h1>
+		<div class="wrapper">
+		<canvas id="myChart44"></canvas>
+		</div>
+		<script>
+
+			var ctx = document.getElementById("myChart44").getContext('2d');
+			var myChart = new Chart(ctx, {
+				type: 'bar',
+				data: {
+					labels: ["<  1","1 - 2","3 - 4","5 - 9","10 - 14","15 - 19","20 - 24","25 - 29","> - 29"],
+					datasets: [{
+						label: 'Total Ans',
+						backgroundColor: "#4169E1",
+						data: [12, 59, 5, 56, 58,12, 59, 87, 45],
+					}, {
+						label: 'Abondon',
+						backgroundColor: "#4682B4",
+						data: [12, 59, 5, 56, 58,12, 59, 85, 23],
+					}, {
+						label: 'None',
+						backgroundColor: "#0000FF",
+						data: [12, 59, 5, 56, 58,12, 59, 65, 51],
+					}
+					],
+				},
+			options: {
+				tooltips: {
+				displayColors: true,
+				callbacks:{
+					mode: 'x',
+				},
+				},
+				scales: {
+				xAxes: [{
+					stacked: true,
+					gridLines: {
+					display: false,
+					}
+				}],
+				yAxes: [{
+					stacked: true,
+					ticks: {
+					beginAtZero: true,
+					},
+					type: 'linear',
+				}]
+				},
+					responsive: true,
+					maintainAspectRatio: false,
+					legend: { position: 'bottom' },
+				}
+			});
+
+		</script>
+
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+		<div class="container">
+		<canvas id="examChart"></canvas>
+		</div>
+
+		<script>
+			var ctx = document.getElementById("examChart").getContext("2d");
+			
+			var d = new Date();
+
+			var month = d.getMonth()+1;
+			var day = d.getDate();
+
+			var output = d.getFullYear() + '-' +
+				((''+month).length<2 ? '0' : '') + month + '-' +
+				((''+day).length<2 ? '0' : '') + day;
+
+			//alert(output);
+			
+			var outputs = parseInt(output);
+
+			
+			
+			var myChart = new Chart(ctx, {
+				type: 'line',
+				options: {
+					scales: {
+					xAxes: [{
+						type: 'time',
+					}]
+					}
+				},
+				data: {
+					labels: ["2022-07-15", "2022-08-15"],
+					datasets: [{
+					label: 'Demo',
+					data: [{
+						t: '2022-07-15',
+						y: 10
+						},
+						{
+						t: '2022-08-15',
+						y: 100
+						}
+					],
+					backgroundColor: [
+						'rgba(255, 99, 132, 0.2)',
+						'rgba(54, 162, 235, 0.2)',
+						'rgba(255, 206, 86, 0.2)',
+						'rgba(75, 192, 192, 0.2)',
+						'rgba(153, 102, 255, 0.2)',
+						'rgba(255, 159, 64, 0.2)'
+					],
+					borderColor: [
+						'rgba(255,99,132,1)',
+						'rgba(54, 162, 235, 1)',
+						'rgba(255, 206, 86, 1)',
+						'rgba(75, 192, 192, 1)',
+						'rgba(153, 102, 255, 1)',
+						'rgba(255, 159, 64, 1)'
+					],
+					borderWidth: 1
+					}]
+				}
+				});
+		</script>
+
+		<!-- Basant -->
+
+
+		<div class="container">
+		<canvas id="myChart41"></canvas>
+		</div>
+
+		<script>
+
+
+				var ctx = document.getElementById("myChart41").getContext('2d');
+				var myChart = new Chart(ctx, {
+					type: 'bar',
+					data: {
+						labels: ["<  1"],
+						datasets: [{
+							label: 'Total Ans',
+							backgroundColor: "#caf270",
+							data: [12],
+						}, {
+							label: 'Abondon',
+							backgroundColor: "#45c490",
+							data: [ 59],
+						}, {
+							label: 'None',
+							backgroundColor: "#008d93",
+							data: [ 56],
+						}
+						],
+					},
+				options: {
+					tooltips: {
+					displayColors: true,
+					callbacks:{
+						mode: 'x',
+					},
+					},
+					scales: {
+					xAxes: [{
+						stacked: true,
+						gridLines: {
+						display: false,
+						},
+						barThickness: 6,  // number (pixels) or 'flex'
+						maxBarThickness: 8 // number (pixels)        
+						
+
+					}],
+					yAxes: [{
+						stacked: true,
+						ticks: {
+						beginAtZero: true,
+						},
+						type: 'linear',
+					}]
+					},
+					layout: {
+					padding: {
+						left: 50
+					}
+				},
+						responsive: false,
+						maintainAspectRatio: true,
+						legend: { position: 'bottom' },
+					}
+				});
+
+		</script>
+		
+		<div class="row text-center">
+			<div class="services-contents">
+			<!-- Start Left services -->
+			<div class="col-md-3 col-sm-6 col-xs-12">
+				<div class="about-move">
+				<div class="services-details">
+					<div class="single-services">
+						<canvas id="doughnutChart" height="200"></canvas>
+
+					</div>
+				</div>
+				<!-- end about-details -->
+				</div>
+			</div>
+			<div class="col-md-3 col-sm-6 col-xs-12">
+				<div class="about-move">
+				<div class="services-details">
+					<div class="single-services">
+					<canvas id="pieChart" height="200"></canvas>
+					</div>
+				</div>
+				<!-- end about-details -->
+				</div>
+			</div>
+			<div class="col-md-3 col-sm-6 col-xs-12">
+				<!-- end col-md-4 -->
+				<div class=" about-move">
+				<div class="services-details">
+					<div class="single-services">
+					<canvas id="doughnutChart1" height="200"></canvas>
+					</div>
+				</div>
+				<!-- end about-details -->
+				</div>
+			</div>
+			<div class="col-md-3 col-sm-6 col-xs-12">
+				<!-- end col-md-4 -->
+				<div class=" about-move">
+				<div class="services-details">
+					<div class="single-services">
+					<canvas id="pieChart1" height="200"></canvas>
+					</div>
+				</div>
+				<!-- end about-details -->
+				</div>
+			</div>
+			</div>
+		</div>
+		
+		<script>
+	
+
+
+					var randomScalingFactor = function() {
+						return Math.round(Math.random() * 100);
+						//return 0;
+					};
+					var randomColorFactor = function() {
+						return Math.round(Math.random() * 255);
+					};
+					var randomColor = function(opacity) {
+						return 'rgba(' + randomColorFactor() + ',' + randomColorFactor() + ',' + randomColorFactor() + ',' + (opacity || '.3') + ')';
+					};
+
+
+
+
+						// doughnut example
+
+						var DoughtnutConfig = {
+							type: 'doughnut',
+							data: {
+								datasets: [{
+									data: [
+										22000,
+										46000,
+									],
+									backgroundColor: [
+										//"#F7464A",
+										"#fe6271",
+										"#28bebd"
+										//"#8dcd8d",
+										//"#2da510","#57c5a5"
+									],
+									label: 'Dataset 1'
+								}],
+								labels: [
+									"Non-electrified",
+									"Electrified",
+								]
+							},
+							options: {
+								responsive: true,
+								legend: {
+									position: 'bottom',
+								}
+							}
+						};
+
+						var DoughtnutConfig1 = {
+							type: 'doughnut',
+							data: {
+								datasets: [{
+									data: [
+										17244,
+										16976,
+									],
+									backgroundColor: [
+										"#FDB45C",
+										"#acaccf",
+									// "#115c9b",
+									],
+									label: 'Dataset 1'
+								}],
+								labels: [
+									"Manned LC",
+									"Unmanned LC",
+								]
+							},
+							options: {
+								responsive: true,
+								legend: {
+									position: 'bottom',
+								}
+							}
+						};
+
+						// pie chart example
+						var PieConfig = {
+							type: 'pie',
+							data: {
+								datasets: [{
+									data: [
+										11394,
+										119382,
+									],
+									backgroundColor: [
+										"#46BFBD",
+										"#FDB45C",
+									],
+								}],
+								labels: [
+									"Imp./Major Bridge",
+									"Minor Bridge",
+								]
+							},
+							options: {
+								responsive: true,
+								legend: {
+									position: 'bottom',
+								}
+							}
+						};
+
+						var PieConfig1 = {
+							type: 'pie',
+							data: {
+								datasets: [{
+									data: [
+										5976,
+										484,
+										2153,
+									],
+									backgroundColor: [
+										//"#F7464A",
+										"#fe6271",
+										"#46BFBD",
+										"#949FB1",
+									],
+								}],
+								labels: [
+									"Non-Suburban (NSG)",
+									"Suburban (SG)",
+									"Halt (HG)",
+								]
+							},
+							options: {
+								responsive: true,
+								legend: {
+									position: 'bottom',
+								}
+							}
+						};
+
+
+						window.onload = function() {
+
+							window.myDoughnut = new Chart(document.getElementById("doughnutChart"), DoughtnutConfig);
+							window.myDoughnut1 = new Chart(document.getElementById("doughnutChart1"), DoughtnutConfig1);
+							window.myPie = new Chart(document.getElementById("pieChart"), PieConfig);
+							window.myPie1 = new Chart(document.getElementById("pieChart1"), PieConfig1);
+						};
+
+		
+		</script>
+
+
+</body>
+</html>
